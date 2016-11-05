@@ -1,0 +1,57 @@
+\chapter{Test conduction}
+\label{test-conduction}
+This chapter describes the tests conducted on the mobile applications, the user interface and the \gls{backend} solution. It includes usability testing, unit testing, component testing and system testing. 
+\section{Usability testing}
+In order to measure how easy the system is to use, and to identify potential problems users can face when using the application, the team performed usability tests. This gave a direct input on how actual users use the system, as the testers are random people and not experts. Multiple hallway tests were performed on campus, both with students and members faculty staff. 
+
+In total, three hallway tests were conducted with five different persons each time. Hallway tests were performed on the initial graphical interface and each time a fundamental changes was made. The first two tests was performed using printed \gls{mockup}s (paper prototypes) made with Balsamiq \cite{balsamiq}, while the last was performed with \gls{mockup}s for the iOS platform created with Omnigraffle \cite{omnigraffle}. 
+
+The users where given a set of tasks to complete and no instructions on how to complete them. The tasks for the second tests were: 
+\begin{enumerate}
+    \item Find the book The Lean Startup in group Netlight Norway’s shelf
+    \item Add a the user called Maren to Netlight Norway
+    \item Change the name of Netlight Norway to Netlight
+\end{enumerate}
+During the first test it was not explain to the users the purpose of the applications. This resulted in some unnecessary confusion. Afterwards, it was argued that few would actually download the application without having at least some understanding of its purpose. It was then decided to explain its general purpose in future tests.
+
+The hallway tests resulted in valuable input on the design. Some roadblocks  was identified by users when asked to complete specific tasks. This entailed  internal discussion and eventually a redesign of some parts of the application.
+
+\section{Unit testing}
+Unit testing is done to verify that individual modules, such as functions, classes or interfaces works as intended with a wide variety of input \textendash  especially with edge cases. \cite[p. 211-216]{progark} Ideally, the test cases and the corresponding module are independent of each other. Unit testing can be a very important tool to verify the integrity of the code during development. As modules are changed or removed, the test case suite can be run again to verify that all affected modules continues to function as expected.
+\subsection{Android}
+Initially, it was planned to use Robolectric for unit testing. Robolectric makes it possible to run unit tests outside the Android Emulator in a regular Java Virtual Machine. \cite{robolectric} This can speed up the testing process at some stages of developement immensely, escpecially for testing functionality not dependent on the UI. Robolectric was used to test the network implementation which communicates with the \gls{backend}. However, as the Realm database is not supported in Robolectric, the team went back to the traditional unit testing with the Android JUnitRunner library. The documentation for JUnitRunner is not particularly useful, as the library has gone through big changes in recent years and because of this the official documentation from Google is inconsistent. More time was spent setting up the unit tests than developing actual code, and therefore unit testing was put on hold in favor of system- and component testing of the application on a phone.
+
+\subsection{iOS}
+Based on feedback from the customer representative regarding testing, the iOS team decided not to maintain an updated test suite for this project. This was also a consequence of very limited resources in the team. Resources were better spent implementing with regular system testing.
+
+\subsection{Backend}
+Because of the Lean way the team was working, short time to market was essential. The \gls{backend} team did not spend any time writing automatic unit tests, but did some unit testing by calling methods and seeing that they gave the expected output. This took a lot of time, and was not prioritized as much as system and component tests. The manual unit tests often did not catch edge cases either. In retrospect the team regrets not having automated tests. In the later iterations there was many small changes to methods, that broke other features. These edge cases was hard to catch when just coming up with inputs when under pressure to deliver a new feature. This meant that many small bugs were not discovered until the mobile applications teams started using the new feature.
+
+That being said, writing automated tests would take the team a lot of time in the first two iterations. The team did not have any guarantee that the initial version of the server application wouldn't be scrapped due to iteration feedback. If the solution was at any point scrapped, all the hours writing automated tests would be for nothing.
+
+\section{Component testing}
+Component testing tests several modules in integration or a single module used recursively. \cite[p. 216-218]{progark} It can be more efficient than unit testing, however, it may not be as thorough as it can be hard to concoct input that cover all edge cases. 
+
+\subsection{Android}
+In order to test the different components of the application without spending too much time with the complex testing libraries, a separate view was made in the application for testing. This view contained buttons such as "Download book with id 140419" which fetched the book from the \gls{backend}, stored it in the database, retrieved it from the database and viewed the result on the screen. Similar methods were made for other objects in the data model, and also for sending objects to the \gls{backend}. 
+
+\subsection{iOS}
+Of reasons similar to why there were no unit tests for iOS, the team decided not to spend resources on component testing.
+
+\subsection{Backend}
+Before putting a new feature into production, the \gls{backend} team did extensive testing with Postman on a local server \cite{postman}. This meant trying out the new or changed \gls{API} request, to see if it worked as expected. The request would be processed by the locally running server application, just like it would be in production. This meant any error messages showed up instantly and could be debugged. The team could have written automated tests for this too, but as with the unit tests it was decided that this was not the best use of the time. This corresponds with the Lean process, and that the customer wanted as short time to market as possible. Writing automated tests would take up time in the initial iterations, and free up time later, but if the whole solution was scrapped at some point, the initial test writing work would be wasted.
+
+\section{System testing}
+The purpose of system testing is to assure that an application as a whole and its individual functions works as intended and that the application does not crash or throw unexpected errors. \cite[p. 219-221]{progark} This part was the main focus, because using the application hands-on on an actual device is an efficient way of testing that multiple parts of the application works when integrated. This is not a comprehensive way of ensuring the reliability of the application, as functions may fail in edge-cases that can be easily tested in unit-testing, but that are hard to test with system testing. 
+
+\subsection{Android}
+System testing in Android was done both using the emulator and by running the application on an actual phone. The latter method proved faster and was used as the main method for system testing. The tight development schedule prevented the team from creating extensive test cases and running them regularly. However, when the application was used in tests, a point was made of logging and solving bugs which appeared irregularly.
+
+\subsection{iOS}
+Full or partial system tests were done regularly to ensure no changes breaks any existing functionality due to the lack of unit and component tests. The testing was conducted both in the iOS Simulator and in a real device, and was tested for both iOS 8 and 9. Some features, such as the scanner, required a device for testing, and were therefore more expensive to test due to increased build time. When new bugs were encountered, they were reported on Jira and resolved continuously. \cite{jira} 
+
+\subsection{Backend}
+System testing on the \gls{backend} itself was hard, as it has no user interface. The team did some testing by sending multiple requests in sequence using Postman, that would be similar to the requests that one of the mobile applications would to \cite{postman}. For the most part, the system tests of the \gls{backend} was done by the mobile application development teams, that reported bugs on the fly, either by adding bug reports on JIRA, or posting on Slack \cite{jira}\cite{slack}.
+
+\section{Summary}
+Testing is a complex and difficult subject in all software development projects, but it is nevertheless very important. The team did not have a test plan at the start of the project, due to the Lean process. This meant the testing processes were developed as the system developed. In turn, this meant not having automated tests, as the team did not want to spent time writing tests that would have to be deleted at some point, due to changing requirements that the LEAN process could impose. The team also found that manual testing, both of units and components, takes a lot of time. Therefore the most used way of testing for this project was system tests, but those weren't conducted in a structured way or planned ahead, due to the time restrictions of the Lean process. 

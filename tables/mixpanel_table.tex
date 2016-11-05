@@ -1,0 +1,23 @@
+\begin{table}[]
+\centering
+\begin{tabular}{|L{2cm}|L{3cm}|L{7cm}|}
+\hline
+Version & Event name & Comments \\
+0.2 & AppLaunced & An event triggered by the launch of the application \\\hline
+ & BookAdded & After the user has scanned a book and choose to add it \\\hline
+ & BookRemoved & When a user choose to remove a book from their personal shelf \\\hline
+ & BookScanned & When a book is scanned using the bar code scanner \\\hline
+0.3 & BorrowBook & When a user borrows a book \\\hline
+ & ReturnBook & When a user returns a book \\\hline
+0.4 & CreateCrowd & When a user creates a crowd \\\hline
+ & AddMember & When a user adds a member to a crowd \\\hline
+ & LeaveCrowd & When a user leaved a crowd \\\hline
+0.5 & BookSearch(Search) & When a user search for a book. Includes the search as property \\\hline
+ & SwitchedFilter & When the user switched between "All books" and "In my groups". The search starts on "In my groups"
+\\\hline
+\end{tabular}
+
+\caption{Mixpanel tracking of events}
+\label{tab:mixpanel_table}
+
+\end{table}

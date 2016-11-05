@@ -1,0 +1,66 @@
+\chapter{Requirements}
+\label{requirements}
+
+The team worked based on the \gls{LSU} at the request of the customer, so it was used user stories instead of requirements to drive the development. Based on these user stories, requirements were written. The user stories used can be found in sections \ref{user-stories-v2}, \ref{user-stories-v3}, \ref{user-stories-v4}, \ref{user-stories-v5} and \ref{user-stories-v6}.
+
+
+\section{Functional}
+\begin{enumerate}[label= {\bf FR \arabic*}]
+    \item The system should present a registration service to the user in which 
+        \begin{enumerate}
+            \item The user should be able to register with a user name, full name, e-mail and password. 
+            \item The user should retrieve a welcoming e-mail when he has successfully registered.
+            \item The user should be able to retrieve a forgotten password, by getting a unique code sent to his e-mail, that in turn is entered to the system together with a new password.
+        \end{enumerate}
+    \item The user should be able to scan a book barcode, then get information about the book. See \ref{fr-show-book}.
+    
+    \item The user should be able to loan a book that a member of one of the crowds the user is a member of owns. \label{fr-user-loan-book}
+    
+    \item The user should be presented with a view ''My Shelf'' in which
+        \begin{enumerate}
+            \item The user can see the books the user has added.
+            \item The user can see the books the user has lent from other users.
+            \item The user can the books the user owns and has lent to other users.
+            \item Look closer at book information by pressing the books, see requirement \ref{fr-show-book}
+        \end{enumerate}
+        
+    \item The user should be able to get information about a book the user is interested in. The user should be presented: \label{fr-show-book}
+        \begin{enumerate}
+            \item Meta information about the book, see requirement \ref{nfr-meta}.
+            \item Which users that currently own the book that are also in the users crowds. The user should be able to set that the user loans the book from one of these users. Also see requirement \ref{fr-user-loan-book}
+            \item If the user owns the book, show who is loaning it or if it's not loaned out. 
+        \end{enumerate}
+        
+    \item The user should be able to manage the owned books. The user should be able to set:
+        \begin{enumerate}
+            \item If the book is available for rent by users that are members of the same crowds as the user.
+            \item That a user is loaning a book, and who is loaning it.
+        \end{enumerate}
+        
+    \item The user should be able to manage crowds. 
+        \label{fr-crowds}
+        \begin{enumerate}
+        \item The user should be able to create a new crowd, and be set as the owner of that crowd.
+        \item The user that owns a specific crowd should be able to manage the users that are a member of the crowd.
+            \begin{enumerate}
+                \item The user should be able to add a new member.
+                \item The user should be able to remove a member from the crowd.
+            \end{enumerate}
+        \end{enumerate}
+
+        \item The user should be able to search for books. Also see requirements \ref{nfr-meta} and \ref{fr-show-book}.
+\end{enumerate}
+
+\section{Non-functional}
+The non-functional requirements is a result of demands from the customer, and the needs of both the development teams and the user stories. It is also a result of the \gls{LSU} process, for instance the need of fast deliveries.
+
+\begin{enumerate}[label= {\bf NFR \arabic*}]
+    \item The user should be able to use the service through native apps on both the Android and iOS-platform. Both apps should meet the same functional requirements.
+    \item A new version of the native apps should be distributed to the users within a week after the development team has declared a new version.
+    \item A new version of the \gls{API} and \gls{backend} services should be able to the apps and users within an hour after the development team has declared a new version.
+    \item The mobile applications should use a third party service to fetch meta information about the books that the system has. \label{nfr-meta}
+    \item The \gls{API} served from the \gls{backend}-solution should conform to the RESTful standard.
+    \item The \gls{backend} solution should approach five nine availability (99.999\%).
+    \item The \gls{backend} solution should use Docker for deployment.
+\end{enumerate}
+

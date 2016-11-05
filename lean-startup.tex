@@ -1,0 +1,114 @@
+\chapter{Lean iterations}
+\label{chap:LeanStartup}
+The basis for the process used in this project is the \gls{LSU}. This chapter explains the development process in detail, and presents each iterations of the product. Each version has its own section which includes how the iteration was planned, how the \gls{UI} was designed, the assumptions that was made and how the selected features was implemented. Each section also includes the feedback from both the customer and the supervisor, as well as from the user. A retrospective is also included for each version.
+
+\section{Introduction}
+This section explains how the development process has been structured during the project, and arguments for why it has been executed the way it was. It will also describe how the development process use some features from Scrum, like the daily stand-up meeting and retrospective meeting, as well as features from Kanban.
+
+\subsection{What The Lean Startup says}
+Because the \gls{LSU} is a methodology for business structure, and a philosophy of how a product shall be developed, it does not have a clear development process structure. The methodology only states that each version of the product shall follow the build-measure-learn feedback loop, illustrated in figure \ref{fig:build-measure-learn}, but does not say explicitly how this will be performed. As a consequence, this project will follow a custom development process with features from other development processes to match the build-measure-learn cycle of the \gls{LSU}. 
+
+Some key points from the \gls{LSU} will now be examined with description of how this project has interpreted them into the development process.
+
+\subsubsection{Characteristics of The Lean Startup}
+In The Lean Startup by Eric Ries, Ries states that his approach at the IMVU, his successful startup, was “characterized by an extremely fast cycle time, a focus on what customers want (without asking them), and a scientific approach to making decisions.” \cite[p.~4]{lean-startup} These are the characteristics that this project’s development process will try to follow. 
+
+The characteristic of having fast cycle time was difficult in the beginning of the project, because the team needed a good amount of time just to make simple features (see version 0.1), but as the project developed the cycles got shortened down to under a week (see version 0.5 and 0.6). In general, to shorten the cycle time the developers tried not to focus too much on the details, such as minor bugs and design questions, and just released the version when the planned functionality was ready. 
+
+In focusing on what the customer, or in this projects lingo users want the project used hallway usability tests with paper prototypes, some surveys and Mixpanel[link] to observe the use. With the first method there was no good way to analyze the result scientifically, but it was a good way to find issues with the design. In the case of the surveys of this project there were one general feedback survey[Link](version 0.2 and 0.3) and one more specific that was used to analyze the user’s needs (version 0.4). Mixpanel was used to track the use of the application from features used to recurring users.
+
+\subsubsection{Validated Learning}                 
+Validated learning is the concept of learning what the users of the product actually wants, often by using scientific analysis. Based on the theory that a startup usually makes a lot of assumptions about that the users that are never tested, the process of validated learning starts by making a key assumption. Then the startup has to find a way to measure exactly that, and not other irrelevant information. The validated learning is thus the learning that is backed up by empirical data. The Lean Startup (2011) states that it is easy for a startup to believe they know what the user wants, and that another trap is to measure the wrong data. \cite{lean-startup} To avoid this in this project the the team tried to follow their assumptions closely and to generate results that were clear. 
+\subsubsection{Early adopters}      
+In Ries’ book it is stated
+“Before new products can be sold successfully to the mass market, they have to be sold to early adopters. These people are a special breed of customer. They accept—in fact prefer—an 80 percent solution; you don’t need a perfect solution to capture their interest.” \cite[p.~87]{lean-startup}
+In the case of this project the users from Netlight were our early adopters. They are technological users that probably will be able to ignore small flaws in the application. 
+                                    
+\subsection{Planning and design}
+\label{planning-intro}
+This section describes what is done in the planning phase and the use of paper prototypes and usability tests.
+
+At the start of each version the project had a planning phase. This included creating a basic assumption, set up the requirements based on that assumption, plan and build a paper prototype to get feedback and then re-organize the requirements for the specific version.
+
+When referring to the versions duration in comparison with the planning and the design, the design was always ready when a new version begun. This makes the iterations a little confusing when writing about versions so in this report the planning phase is describes at the start of each version section. An illustration of how this was preformed is found in figure \ref{figs:design-implementation}.
+
+\begin{figure}
+\centering
+\includegraphics[height=2.6cm]{figs/design-vs-implementation.png}
+\caption{How the planning and design phases of the versions were performed in a time line.}
+\label{figs:design-implementation}
+\end{figure}
+
+
+\subsubsection{Requirements}
+In this project the base for the functional requirements of the version are described in user stories as is a method borrowed from Scrum in the format of Mike Cohn.\cite{scrum-user-stories} The project chose to use user stories for this purpose because the stories detects the needs of the user and makes the requirements user oriented.
+
+At the end of the project when the development process was ended with creating a requirement document representing the functional requirements based on the current product and the demands from the customer in terms of uptime of the server and similar nonfunctional requirements. The nonfunctional requirements were also created continuously, but those requirements were often specified by the customer of the project.
+
+\subsubsection{Prototypes and usability testing}
+For all the early versions of the product (0.1 - 0.5) a paper prototype was created  to illustrate the functionality and possible designs. There were created different types of paper prototypes. The first were generic phones with little color whilst the later versions were operative system specific paper prototypes with design features. 
+
+The idea of the paper prototypes were to get a product out to the users as fast as possible and get their reaction and feedback. The paper prototypes were created after the initial assumption and based on the user stories defined to answer the questions created from the assumption. The usability tests with the paper prototypes were conducted at the \gls{NTNU}, mainly on students. 
+
+In addition to the paper prototypes some movies were created to illustrate the application’s functionality before the functionality was implemented. This technique is described in the version 0.1 and 0.2 where there were released movies. 
+
+\subsection{Assumptions and questions}
+Assumptions are a key feature of The Lean Startup methodology. At the beginning of each version the team have made a basic assumption. In the early versions this was leap-of-faith assumptions because there were no feedback to use as basis for the assumption. However as the project evolved the assumptions were based on feedback from surveys and the customer. 
+
+The assumption in the Lean Startup Methodology are defined as what the startup believe is true about the users of the product being developed. \cite{lean-startup} In this project there were a lot of assumptions about the users that were examined during the iterations. Each assumption generated a lot of questions about the users. To answer these questions and in that way get an acknowledgement about the assumptions were the goal of each iteration. A list of the assumptions for each version is in table \ref{assumptions}. 
+
+\input{tables/assumptions.tex}
+
+\subsection{Feedback}
+\label{feedback}
+The Lean Startup has a lot of techniques that can be used to get different types of feedback from the user. The most important feedback is the one you get from the actual users according to Eric Ries’ The Lean Startup. In this project Mixpanel was used to measure the users use. At the start of the implementation of a version the team decided what baseline metrics should be used to measure the users use. In Mixpanel you can track any event you wish and add properties to that event for extra information. A table of all the tracked events can be found in table \ref{tab:mixpanel_table}.
+
+There were not a lot of users in the early versions of the application, which entailed that it would be a little difficult to get some real user data other than some users from Netlight. As a consequence of this in addition to  the time limit of the project and continuous development the team focused on the feedback from the customer and the indications from the users until the last version. When the final version was released, what the customer ment was a minimal viable product for Netlight, the real user analysis could start. Unfortunately there is not much to do with the feedback for this report other than to make suggestions for further work.
+\input{tables/mixpanel_table.tex}  
+
+\subsection{Retrospective meetings}
+\label{retrospective-intro}
+At the end of each version the team had an internal retrospective meeting based on the Scrum standard for retrospective meetings.\cite{scrum-retrospective}  In the first versions the meeting was taken as a round around the table where each member stated what they thought went well in the version and what they thought could be improved to the next. After two versions it was clear that the team members had difficulties with coming up with feedback on the spot, so the procedure was changed. 
+
+From version 0.3 the points were written down on notes instead of all the team members speaking out loud. The retrospective meeting started with all team members writing down at least three positive aspects of the version, and three point of improvement on sticky notes. Then all of these were put up on a white board and read out loud. If someone disagreed they could say it out loud and the team would discuss whether it was correct. After all the improvement points were read through the team agreed upon two-three points they should focus on improving for the next version.
+
+With the new type of retrospective meeting the team got a clearer vision of what was working well, both within the team and in the implementation. It also had a positive effect from getting the team members to agreeing upon common goals and made it easier to correct someone if they did not follow what they had promised.
+
+\subsection{A generic example of a version}
+\label{generic-example}
+This section describes how a typical version iteration is done in this performed. 
+
+\subsubsection{Assumption and questions}
+At the beginning of the iteration, usually before the previous version is released, the team gathers and decides on an assumption that will be tested in the version. Based on that assumption some questions are generated. These questions are created based on what is needed to be learned to determine if the assumption is correct. 
+
+\subsubsection{Planning and design}
+After the questions are created the team decides what methods will be used to get answers to those questions. It is usually some method that does not require a lot of time, like a prototype or a survey to get the initial feedback and decide what the team think the users want. Based on the questions and assumption the team creates user stories to represent the requirements selected for the version.
+After discussing the possible ways those stories can be implemented and drawing some sketches on the whiteboard the team agrees upon a design of the functionality and a paper prototype is created for initial testing of functionality and design. 
+
+\subsubsection{Implementation}
+When the feedback from the initial prototype is done, the development teams start to implement the functionality based on the prototype. The Android team develops the Android application and publish the application on Google Play as soon as it is done. The iOS team develops the iOS application and puts it up for review in iTunes Connect.
+The application is published in beta mode so registered users can download the application in TestFlight after the review. The backend team updated the API to support the new requests needed for the version and updates swagger in parallel. The changes are then uploaded to Heroku so the clients can use the new functionality. 
+
+\subsubsection{Feedback}
+When the applications are released Mixpanel is used to acquire feedback from the users. The feedback from the customer who is using the application is also taken into consideration. If the team learns that the users do not want the new feature that feature will not be a focus in the next version. If it seems that the users approve of it, and maybe want something more that will be the main focus. In the interest of our customer there are some key features that needs to be implemented in the application, but to which extent and in what manner is up to the feedback received from users.
+
+\subsubsection{Review and retrospective}
+After the feedback is received and the new version is released the team meets up and discuss the feedback received. As mentioned in section \ref{feedback} it was a problem to receive enough feedback to be sure about what the users wanted, but the team used the feedback they got and generated new assumption.
+
+In addition to learning about the user’s needs in the application the team has a retrospective meeting after the version is released. When the focus points of the next version has been selected the iteration is done. 
+
+\include{versions/version-01}
+
+\include{versions/version-02}
+
+\include{versions/version-03}
+
+\clearpage
+\include{versions/version-04}
+
+\include{versions/version-05}
+
+\include{versions/version-06}
+
+
+

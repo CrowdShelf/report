@@ -1,0 +1,57 @@
+    \documentclass[11pt, oneside]{report}
+    \usepackage{config/style} 
+    % \usepackage{} are all in that file. DO NOT ADD USEPACKAGE-COMMANDS HERE
+    
+    \DefineBibliographyStrings{english}{
+      bibliography = {References},
+    }
+    \addbibresource{references}
+    \include{acronyms}
+    \include{glossary}
+    
+    \begin{document}
+    
+    \include{frontpage}
+    \include{abstract}
+    \include{acknowledgement}
+    
+    \thispagestyle{empty}
+    \pagenumbering{roman}
+    
+    
+    \tableofcontents
+    \listoffigures
+    \listoftables
+    
+    \clearpage
+    
+    \pagenumbering{arabic}
+    \pagestyle{fancy}
+    \fancyhead[L]{}
+    \glsresetall
+    \include{introduction}
+    \glsresetall
+    \include{project-plan}
+    \glsresetall
+    \include{project-organization}
+    \glsresetall
+    \include{preliminary-studies}
+    \glsresetall
+    \include{architectural-description}
+    \glsresetall
+    \include{lean-startup}
+    \glsresetall
+    \include{requirements}
+    \glsresetall
+    \include{test-plan}
+    \glsresetall
+    \include{conclusion}
+    \glsresetall
+    \include{reflection}
+    
+    \printbibliography[heading=bibintoc]
+    \printglossaries
+    
+    \include{appendices/appendix-main}
+    
+    \end{document}
